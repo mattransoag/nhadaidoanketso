@@ -1,14 +1,13 @@
-# V6.0 pilot — chỉ dữ liệu giả lập
+# V6.0.1 PRO — thử nghiệm riêng tư
 
-Không thay thế bản demo GitHub Pages. Chưa tích hợp toàn bộ nghiệp vụ và chưa triển khai GAS.
+## Nâng cấp từ V6.0
 
-1. Tạo Google Sheets mới, riêng tư, chỉ chứa dữ liệu giả lập. Không chia sẻ cho cán bộ cơ sở.
-2. Mở Extensions > Apps Script. Dán Code.gs, tạo tệp HTML tên Portal và dán Portal.html.
-3. Project Settings > Script Properties: thêm SPREADSHEET_ID (ID bảng tính mới) và PILOT_ENABLED = TRUE. Không đưa ID hoặc bí mật lên GitHub.
-4. Chạy setupV60_ trong trình soạn thảo, cấp quyền, kiểm tra 11 sheet. Không sửa tiêu đề cột. Thêm một đơn vị mẫu vào Units: DV-M001 | Đơn vị mẫu A | TRUE. Thêm email Google của người triển khai vào Users: email | SUPER_ADMIN | (trống) | TRUE.
-5. Deploy > New deployment > Web app. Execute as: Me; Who has access: Only myself. Không chọn Anyone. Mở URL /exec để thử đọc/ghi hồ sơ nháp. Nếu danh tính không xác định, API từ chối.
-6. Không đưa dữ liệu thật, không cấp quyền cơ sở, không dùng bảng tính chung. Bản này cố ý giới hạn người thực thi là chủ sở hữu. Cấu trúc quyền 5 vai trò mới là bước chuẩn bị. Cần xác minh phương án xác thực Workspace hoặc nhà cung cấp danh tính phù hợp, kiểm thử chéo đơn vị với tài khoản thật và bảo đảm người dùng không truy cập trực tiếp Sheets/Drive trước khi mở rộng.
+Không chạy lại setup, không xóa dữ liệu. Sao lưu bảng tính mẫu trước khi nâng cấp. Thay toàn bộ Code.gs và Portal.html bằng hai tệp cùng tên trong thư mục này. Không cần PortalPro.html; doGet luôn dùng Portal. Giữ SPREADSHEET_ID và PILOT_ENABLED = TRUE hiện có. Tạo thư mục Drive riêng tư dành riêng cho minh chứng mẫu, không chia sẻ với bất cứ người dùng nào khác, thêm EVIDENCE_FOLDER_ID vào Script Properties. Triển khai phiên bản mới của Web App hiện có, Execute as Me, Only myself. Có thể cần cấp thêm quyền Drive. Không dùng dữ liệu thật.
 
-Các API hiện có: session, units.list, records.list, records.create, records.update. Chưa có API phê duyệt, tài chính, minh chứng, báo cáo, nhiệm vụ hoặc sao lưu thực tế. Giao diện Portal chỉ là trang kiểm thử riêng. Không gọi là đã tích hợp V6 toàn diện.
+## Phạm vi
 
-Tài liệu Google: https://developers.google.com/apps-script/reference/base/session ; https://developers.google.com/apps-script/guides/web .
+Có API và màn hình thử nghiệm cho hồ sơ, phê duyệt, tiến độ, hạn mức và giao dịch, minh chứng JPG/PNG/PDF tối đa 5 MB, nghiệm thu/bàn giao/quyết toán/lưu trữ, chỉ tiêu, nhiệm vụ, báo cáo, danh mục, xem tài khoản, nhật ký và xuất JSON. Báo cáo CSV mở Excel, in PDF; chưa có DOCX/XLSX native. Chưa có phục hồi tự động, sao lưu nội dung tệp, phân quyền nhiều tài khoản thật, kiểm thử giao dịch mất kết nối, hay đủ chi tiết quy trình V5.8.2. Bản demo GitHub không thay đổi. Khóa owner-only không được gỡ. Không chia sẻ trực tiếp Sheets/Drive.
+
+## Kiểm thử bắt buộc
+
+1. Hồ sơ đã có vẫn hiện sau cập nhật. Tạo hồ sơ giả lập, sửa, gửi thẩm định, duyệt. 2. Giao hạn mức mẫu, cấp và giải ngân, từ chối vượt hạn mức/trùng chứng từ. Kiểm tra sổ giao dịch và hồ sơ khớp nhau. Ghi nhiều sheet không có giao dịch nguyên tử; nếu LEDGER_MISMATCH thì dừng ghi và đối chiếu thủ công. 3. Tải minh chứng giả lập, kiểm tra Drive riêng tư, tải lại. 4. Tiến độ 100%, nghiệm thu, bàn giao, quyết toán chỉ khi số liệu khớp, lưu trữ. 5. Lọc báo cáo, xuất CSV/PDF, giao nhiệm vụ, gửi/duyệt báo cáo, xuất JSON. 6. Kiểm tra tài khoản khác bị từ chối; chỉ mở rộng sau thiết kế xác thực máy chủ và thử quyền chéo đơn vị. Không đưa dữ liệu thật trước nghiệm thu.
