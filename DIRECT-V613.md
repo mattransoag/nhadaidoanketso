@@ -1,0 +1,9 @@
+# V6.1.3 — Direct GAS pilot only
+GitHub workspace uses text/plain POST and reads JSON, without iframe, gateway or navigation to GAS. Browser CORS behavior and live OAuth are NOT yet tested. config613.js remains empty, fail closed. Existing owner-only deployment is unchanged.
+
+## Setup (isolated synthetic data only)
+1. Create a new spreadsheet, Drive folder and Apps Script project; use only fictional data. Copy gas-v60/Code.gs. Set SPREADSHEET_ID and DEMO_SPREADSHEET_ID to the new spreadsheet ID, EVIDENCE_FOLDER_ID, PILOT_ENABLED=TRUE. Run setupV60_ manually. Populate Units and Users with test accounts. Never enable direct access on existing data.
+2. Google Cloud OAuth web client: authorized JavaScript origin https://mattransoag.github.io. Configure consent/test users. Set GOOGLE_CLIENT_ID in script properties. For Workspace accounts set GOOGLE_HOSTED_DOMAIN; otherwise only @gmail.com accepted. Enroll verified Google subject per email in private script property SUB613_<email>; obtain subject from verified identity, not an untrusted claim. Do not send tokens or secrets over chat or GitHub.
+3. Set DIRECT_DEMO_ENABLED=TRUE in the isolated project only. Deploy execute as owner with transport access Anyone only after reviewing abuse/quota risks; requests require verified Google ID token and enrolled subject, business actions also require server session. Set public endpoint and OAuth client ID in config613.js after confirming isolation. No secret in frontend.
+4. Test actual browser CORS response, login, all five roles, read/write cross-unit denial, expiry/revocation, locked users, finance, evidence and exports. Do not use no-cors (opaque response). If CORS fails, direct transport is not viable in that environment; keep disabled.
+5. Tokeninfo is suitable for diagnostic pilot, not production SLA; production needs robust local JWT verification, abuse controls, session review, recovery and full security acceptance. No real data.
