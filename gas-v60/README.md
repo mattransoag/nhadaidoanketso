@@ -11,3 +11,6 @@ Có API và màn hình thử nghiệm cho hồ sơ, phê duyệt, tiến độ, 
 ## Kiểm thử bắt buộc
 
 1. Hồ sơ đã có vẫn hiện sau cập nhật. Tạo hồ sơ giả lập, sửa, gửi thẩm định, duyệt. 2. Giao hạn mức mẫu, cấp và giải ngân, từ chối vượt hạn mức/trùng chứng từ. Kiểm tra sổ giao dịch và hồ sơ khớp nhau. Ghi nhiều sheet không có giao dịch nguyên tử; nếu LEDGER_MISMATCH thì dừng ghi và đối chiếu thủ công. 3. Tải minh chứng giả lập, kiểm tra Drive riêng tư, tải lại. 4. Tiến độ 100%, nghiệm thu, bàn giao, quyết toán chỉ khi số liệu khớp, lưu trữ. 5. Lọc báo cáo, xuất CSV/PDF, giao nhiệm vụ, gửi/duyệt báo cáo, xuất JSON. 6. Kiểm tra tài khoản khác bị từ chối; chỉ mở rộng sau thiết kế xác thực máy chủ và thử quyền chéo đơn vị. Không đưa dữ liệu thật trước nghiệm thu.
+
+## V6.0.2
+Thay Code.gs và Portal.html, giữ nguyên Script Properties, không chạy setup lại. Triển khai phiên bản mới trên cùng deployment, Execute as Me / Only myself. Có thêm nhóm menu, biểu mẫu tiền tệ, cảnh báo, xuất DOCX/XLSX phía GAS, in A4 và JSON kèm minh chứng (tổng tệp tối đa 10 MB). Chưa kiểm thử Office thực tế, phục hồi tự động hoặc nhiều tài khoản; vẫn chỉ dùng dữ liệu mẫu. Tệp sao lưu có dữ liệu và nội dung minh chứng: giữ riêng tư. Không mở quyền công khai.
