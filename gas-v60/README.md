@@ -14,3 +14,6 @@ Có API và màn hình thử nghiệm cho hồ sơ, phê duyệt, tiến độ, 
 
 ## V6.0.2
 Thay Code.gs và Portal.html, giữ nguyên Script Properties, không chạy setup lại. Triển khai phiên bản mới trên cùng deployment, Execute as Me / Only myself. Có thêm nhóm menu, biểu mẫu tiền tệ, cảnh báo, xuất DOCX/XLSX phía GAS, in A4 và JSON kèm minh chứng (tổng tệp tối đa 10 MB). Chưa kiểm thử Office thực tế, phục hồi tự động hoặc nhiều tài khoản; vẫn chỉ dùng dữ liệu mẫu. Tệp sao lưu có dữ liệu và nội dung minh chứng: giữ riêng tư. Không mở quyền công khai.
+
+## V6.0.3
+Sao lưu dữ liệu mẫu trước khi nâng cấp. Thay Code.gs và Portal.html, giữ nguyên Script Properties và deployment Only myself. Vào Kiểm tra hệ thống > Cấp mã nghiệp vụ cho hồ sơ cũ; thao tác giữ UUID, cập nhật JSON và version hồ sơ, dùng năm tiếp nhận hoặc năm cập nhật nếu thiếu ngày tiếp nhận. Không sửa ID bằng tay. Bộ đếm nằm trong Script Properties; không xóa hoặc đặt lại. Mã nghiệp vụ khác cấp cho thao tác mới; không thay thế số chứng từ chính thức. Kiểm tra lại hồ sơ, báo cáo, giao dịch. Phân trang máy chủ vẫn đọc toàn bảng Sheets rồi lọc; chưa phải tối ưu cơ sở dữ liệu lớn. Chưa có nhập XLSX hàng loạt, QR, xem trước PDF, phục hồi tự động, kiểm thử Office và nhiều tài khoản thực tế. Chỉ dữ liệu giả lập.
